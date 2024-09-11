@@ -1,4 +1,4 @@
-package ProblemDomain;
+package Enums;
 
 public enum ApplianceTypes
 {

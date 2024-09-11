@@ -1,5 +1,7 @@
 package ProblemDomain;
 
+import Enums.ApplianceTypes;
+
 abstract class Appliance {
     public Integer itemNumber;
     public String brand;
