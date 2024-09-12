@@ -17,12 +17,23 @@ public class Microwave extends Appliance {
     /**
      * Method to determine the room type of the microwave
      */
-    public MicrowaveRoomType roomTypeDisplay()
+    public MicrowaveRoomType getRoomType()
     {
         return switch (this.roomType) {
             case "Kitchen" -> MicrowaveRoomType.Kitchen;
             case "Worksite" -> MicrowaveRoomType.WorkSite;
             default -> throw new IllegalStateException("Unexpected value: " + this.roomType);
+        };
+    }
+
+    /**
+     * Method to determine the room type of the microwave
+     */
+    public String displayRoomType()
+    {
+        return switch (this.getRoomType()) {
+            case MicrowaveRoomType.Kitchen -> "Kitchen";
+            case MicrowaveRoomType.WorkSite -> "Worksite";
         };
     }
 
