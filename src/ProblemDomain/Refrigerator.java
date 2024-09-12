@@ -20,7 +20,7 @@ public class Refrigerator extends Appliance {
         };
     }
 
-    public Refrigerator(Integer itemNumber, String brand, Integer quantity,
+    public Refrigerator(String itemNumber, String brand, Integer quantity,
                         Integer wattage, String color, Double price,
                         Integer doors, Integer height, Integer width) {
         super(itemNumber, brand, quantity, wattage, color, price);

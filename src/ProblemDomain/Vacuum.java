@@ -6,7 +6,7 @@ public class Vacuum extends Appliance {
     public String grade;
     public Integer voltage;
 
-    public Vacuum(Integer itemNumber, String brand, Integer quantity,
+    public Vacuum(String itemNumber, String brand, Integer quantity,
                   Integer wattage, String color, Double price,
                   String grade, Integer voltage) {
         super(itemNumber, brand, quantity, wattage, color, price);

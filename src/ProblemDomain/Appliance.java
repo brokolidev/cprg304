@@ -2,8 +2,8 @@ package ProblemDomain;
 
 import Enums.ApplianceTypes;
 
-abstract class Appliance {
-    public Integer itemNumber;
+public abstract class Appliance {
+    public String itemNumber;
     public String brand;
     public Integer quantity;
     public Integer wattage;
@@ -14,7 +14,7 @@ abstract class Appliance {
     /**
      * Constructor for the Appliance class
      */
-    public Appliance(Integer itemNumber, String brand, Integer quantity, Integer wattage, String color, Double price) {
+    public Appliance(String itemNumber, String brand, Integer quantity, Integer wattage, String color, Double price) {
         this.itemNumber = itemNumber;
         this.brand = brand;
         this.quantity = quantity;
@@ -30,9 +30,8 @@ abstract class Appliance {
      * @param itemNumber the item number of the appliance
      * @return Appliance type
      */
-    public static ApplianceTypes getApplianceType(Integer itemNumber) {
-        String itemNumberString = itemNumber.toString();
-        char firstDigit = itemNumberString.charAt(0);
+    public static ApplianceTypes getApplianceType(String itemNumber) {
+        char firstDigit = itemNumber.charAt(0);
         return switch (firstDigit) {
             case '1' -> ApplianceTypes.Refrigerator;
             case '2' -> ApplianceTypes.Vacuum;

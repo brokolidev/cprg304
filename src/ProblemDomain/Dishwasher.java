@@ -7,7 +7,7 @@ public class Dishwasher extends Appliance {
     public String soundRating;
     public SoundRatingLevel soundRatingLevel;
 
-    public Dishwasher(Integer itemNumber, String brand, Integer quantity,
+    public Dishwasher(String itemNumber, String brand, Integer quantity,
                       Integer wattage, String color, Double price,
                       String feature, String soundRating) {
         super(itemNumber, brand, quantity, wattage, color, price);

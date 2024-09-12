@@ -6,7 +6,7 @@ public class Microwave extends Appliance {
     public Double capacity;
     public String roomType;
 
-    public Microwave(Integer itemNumber, String brand, Integer quantity,
+    public Microwave(String itemNumber, String brand, Integer quantity,
                      Integer wattage, String color, Double price,
                      Double capacity, String roomType) {
         super(itemNumber, brand, quantity, wattage, color, price);
