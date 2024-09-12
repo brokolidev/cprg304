@@ -31,7 +31,7 @@ public class Refrigerator extends Appliance {
 
 
     /**
-     * Method to format the appliance properties for a file
+     * Method to format the all properties for a file
      */
     @Override
     public String FormatForFile()

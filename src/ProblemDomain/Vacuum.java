@@ -1,5 +1,7 @@
 package ProblemDomain;
 
+import Enums.Voltage;
+
 public class Vacuum extends Appliance {
     public String grade;
     public Integer voltage;
@@ -10,6 +12,34 @@ public class Vacuum extends Appliance {
         super(itemNumber, brand, quantity, wattage, color, price);
         this.grade = grade;
         this.voltage = voltage;
+    }
+
+    /**
+     * Determine the voltage level of the vacuum
+     */
+    public Voltage voltageLevel()
+    {
+        return switch (this.voltage) {
+            case 18 -> Voltage.Low;
+            case 24 -> Voltage.High;
+            default -> Voltage.Any;
+        };
+    }
+
+    /**
+     * Method to format the all properties for a file
+     */
+    @Override
+    public String FormatForFile()
+    {
+        String commonFormatted = super.FormatForFile();
+
+        return String.join(
+                ";",
+                commonFormatted,
+                grade,
+                voltage.toString()
+        );
     }
 
     // redefine the toString method
