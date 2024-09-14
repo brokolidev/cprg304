@@ -12,19 +12,19 @@ public class Main {
         while (option != Options.SaveExit) {
             modernAppliances.DisplayMenu();
 
-            System.out.println("\nEnter option:");
+            System.out.println("Enter option:");
 
             option = Options.values()[Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine())];
 
             switch (option) {
                 case Checkout:
-//                    modernAppliances.Checkout();
+                    modernAppliances.Checkout();
                     break;
                 case Find:
 //                    modernAppliances.Find();
                     break;
                 case DisplayType:
-//                    modernAppliances.DisplayType();
+//                    modernAppliances
                     break;
                 case RandomList:
 //                    modernAppliances.RandomList();

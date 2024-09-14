@@ -18,7 +18,7 @@ public class ModernAppliance {
     }
 
     public void DisplayMenu() {
-        System.out.println("Welcome to Modern Appliances!");
+        System.out.println("\nWelcome to Modern Appliances!");
         System.out.println("How may we assist you?");
         System.out.println("1 - Check out Appliance");
         System.out.println("2 - Find appliances by brand");
@@ -27,7 +27,34 @@ public class ModernAppliance {
         System.out.println("5 - Save and exit");
     }
 
-//    public void Checkout();
+    public void Checkout() {
+        System.out.println("Enter the item number of an appliance");
+
+        // read the item number from the user
+        Scanner scanner = new Scanner(System.in);
+        String inputItemNumber = scanner.nextLine();
+
+        Appliance foundAppliance = null;
+
+        // find the appliance in the list
+        for (Appliance appliance : applianceList) {
+            if (appliance.itemNumber.equals(inputItemNumber)) {
+                foundAppliance = appliance;
+                break;
+            }
+        }
+
+        if(foundAppliance == null) {
+            System.out.println("No appliance found with that item number");
+        } else {
+            if(foundAppliance.quantity > 0) {
+                foundAppliance.quantity--;
+                System.out.println("Appliance " + foundAppliance.itemNumber + " has been checked out.");
+            } else {
+                System.out.println("The appliance is not available to be checked out.");
+            }
+        }
+    }
 //    public void DisplayDishwashers();
 //    public void DisplayMicrowaves();
 //    public void DisplayRefrigerators();
