@@ -29,12 +29,17 @@ public class ModernAppliance {
         File dataFile = new File(APPLIANCES_TEXT_FILE);
         Scanner scanner = null;
 
+        // create a new appliance list
+        List<Appliance> appliances = new java.util.ArrayList<>();
+
         try
         {
             scanner = new Scanner( dataFile );
 
             while (scanner.hasNextLine()) {
                 Appliance appliance = createAppliance(scanner.nextLine());
+                System.out.println(appliance);
+                appliances.add(appliance);
             }
 
             scanner.close();
@@ -44,7 +49,7 @@ public class ModernAppliance {
             e.printStackTrace();
         }
 
-        return null;
+        return appliances;
     }
 
     private Appliance createAppliance(String line) {
