@@ -17,6 +17,16 @@ public class ModernAppliance {
         this.applianceList = readAppliances();
     }
 
+    public void DisplayMenu() {
+        System.out.println("Welcome to Modern Appliances!");
+        System.out.println("How may we assist you?");
+        System.out.println("1 - Check out Appliance");
+        System.out.println("2 - Find appliances by brand");
+        System.out.println("3 - Display appliances by type");
+        System.out.println("4 - Produce random appliance list");
+        System.out.println("5 - Save and exit");
+    }
+
 //    public void Checkout();
 //    public void DisplayDishwashers();
 //    public void DisplayMicrowaves();
@@ -25,6 +35,11 @@ public class ModernAppliance {
 //    public void Find();
 //    public void RandomList();
 
+    /**
+     * Read the appliances from the text file
+     * @return
+     * @throws FileNotFoundException
+     */
     private List<Appliance> readAppliances() throws FileNotFoundException {
         File dataFile = new File(APPLIANCES_TEXT_FILE);
         Scanner scanner = null;
@@ -36,9 +51,10 @@ public class ModernAppliance {
         {
             scanner = new Scanner( dataFile );
 
+            // read the file line by line and create an appliance object
+            // add the appliance object to the list
             while (scanner.hasNextLine()) {
                 Appliance appliance = createAppliance(scanner.nextLine());
-                System.out.println(appliance);
                 appliances.add(appliance);
             }
 
