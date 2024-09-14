@@ -27,6 +27,7 @@ public abstract class Appliance {
     /**
      * method for determining the type of appliance by taking first digit of item number
      * 1 = refrigerators, 2 = vacuums, 3 = microwaves, 4 or 5 = dishwashers
+     *
      * @param itemNumber the item number of the appliance
      * @return Appliance type
      */
@@ -37,23 +38,21 @@ public abstract class Appliance {
             case '2' -> ApplianceTypes.Vacuum;
             case '3' -> ApplianceTypes.Microwave;
             case '4', '5' -> ApplianceTypes.Dishwasher;
-            default -> ApplianceTypes.Unknown;
+            default -> ApplianceTypes.Appliance;
         };
     }
 
     /**
      * Method to check out an appliance
      */
-    public void checkout()
-    {
+    public void checkout() {
         quantity -= 1;
     }
 
     /**
      * Method to format the appliance properties for a file
      */
-    public String formatForFile()
-    {
+    public String formatForFile() {
         // join all the properties with a semicolon
         return String.join(
                 ";",
@@ -64,14 +63,12 @@ public abstract class Appliance {
 
     @Override
     public String toString() {
-        return "Appliance{" +
-                "itemNumber=" + itemNumber +
-                ", brand='" + brand + '\'' +
-                ", quantity=" + quantity +
-                ", wattage=" + wattage +
-                ", color='" + color + '\'' +
-                ", price=" + price +
-                '}';
+        return "ItemNumber: " + itemNumber +
+                "\nBrand: " + brand +
+                "\nQuantity: " + quantity +
+                "\nWattage: " + wattage +
+                "\nColor: " + color +
+                "\nPrice: " + price;
     }
 }
 

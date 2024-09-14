@@ -1,8 +1,7 @@
 package Enums;
 
-public enum ApplianceTypes
-{
-    Unknown,
+public enum ApplianceTypes {
+    Appliance,
     Refrigerator,
     Vacuum,
     Microwave,

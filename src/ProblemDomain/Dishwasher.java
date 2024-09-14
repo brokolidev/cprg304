@@ -18,8 +18,7 @@ public class Dishwasher extends Appliance {
     /**
      * Method to determine sound level
      */
-    public SoundRatingLevel getSoundRatingLevel()
-    {
+    public SoundRatingLevel getSoundRatingLevel() {
         return switch (this.soundRating) {
             case "Qt" -> SoundRatingLevel.Qt;
             case "Qr" -> SoundRatingLevel.Qr;
@@ -32,8 +31,7 @@ public class Dishwasher extends Appliance {
     /**
      * Method to display sound level
      */
-    public String displaySoundRating()
-    {
+    public String displaySoundRating() {
         return switch (this.getSoundRatingLevel()) {
             case SoundRatingLevel.Qt -> "Quietest";
             case SoundRatingLevel.Qr -> "Quieter";
@@ -47,8 +45,7 @@ public class Dishwasher extends Appliance {
      * Method to format the all properties for a file
      */
     @Override
-    public String formatForFile()
-    {
+    public String formatForFile() {
         String commonFormatted = super.formatForFile();
 
         return String.join(
@@ -63,12 +60,12 @@ public class Dishwasher extends Appliance {
     @Override
     public String toString() {
         return "ItemNumber: " + itemNumber +
-                "\nbrand: " + brand +
-                "\nquantity: " + quantity +
-                "\nwattage: " + wattage +
-                "\ncolor: " + color +
-                "\nprice: " + price +
-                "\nfeature: " + feature +
-                "\nsoundRating: " + this.displaySoundRating();
+                "\nBrand: " + brand +
+                "\nQuantity: " + quantity +
+                "\nWattage: " + wattage +
+                "\nColor: " + color +
+                "\nPrice: " + price +
+                "\nFeature: " + feature +
+                "\nSound Rating: " + this.displaySoundRating() + "\n";
     }
 }

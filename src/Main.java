@@ -24,7 +24,7 @@ public class Main {
                     modernAppliances.find();
                     break;
                 case DisplayType:
-//                    modernAppliances
+                    modernAppliances.displayType();
                     break;
                 case RandomList:
 //                    modernAppliances.RandomList();

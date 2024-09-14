@@ -17,8 +17,7 @@ public class Microwave extends Appliance {
     /**
      * Method to determine the room type of the microwave
      */
-    public MicrowaveRoomType getRoomType()
-    {
+    public MicrowaveRoomType getRoomType() {
         return switch (this.roomType) {
             case "Kitchen" -> MicrowaveRoomType.Kitchen;
             case "Worksite" -> MicrowaveRoomType.WorkSite;
@@ -29,8 +28,7 @@ public class Microwave extends Appliance {
     /**
      * Method to determine the room type of the microwave
      */
-    public String displayRoomType()
-    {
+    public String displayRoomType() {
         return switch (this.getRoomType()) {
             case MicrowaveRoomType.Kitchen -> "Kitchen";
             case MicrowaveRoomType.WorkSite -> "Worksite";
@@ -41,8 +39,7 @@ public class Microwave extends Appliance {
      * Method to format all the properties of the microwave for a file
      */
     @Override
-    public String formatForFile()
-    {
+    public String formatForFile() {
         String commonFormatted = super.formatForFile();
 
         // join all the properties with a semicolon
@@ -58,12 +55,12 @@ public class Microwave extends Appliance {
     @Override
     public String toString() {
         return "ItemNumber: " + itemNumber +
-                "\nbrand: " + brand +
-                "\nquantity: " + quantity +
-                "\nwattage: " + wattage +
-                "\ncolor: " + color +
-                "\nprice: " + price +
-                "\ncapacity: " + capacity +
-                "\nroomType: " + roomType;
+                "\nBrand: " + brand +
+                "\nQuantity: " + quantity +
+                "\nWattage: " + wattage +
+                "\nColor: " + color +
+                "\nPrice: " + price +
+                "\nCapacity: " + capacity +
+                "\nRoom Type: " + roomType + "\n";
     }
 }

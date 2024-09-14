@@ -1,7 +1,8 @@
 import Enums.ApplianceTypes;
 import ProblemDomain.*;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
@@ -48,10 +49,10 @@ public class ModernAppliance {
             }
         }
 
-        if(foundAppliance == null) {
+        if (foundAppliance == null) {
             System.out.println("No appliance found with that item number");
         } else {
-            if(foundAppliance.quantity > 0) {
+            if (foundAppliance.quantity > 0) {
                 foundAppliance.quantity--;
                 System.out.println("Appliance " + foundAppliance.itemNumber + " has been checked out.");
             } else {
@@ -83,35 +84,155 @@ public class ModernAppliance {
         }
 
         // display the found appliances
-        this.displayAppliancesFromList(foundAppliances);
+        this.displayAppliancesFromList(foundAppliances, ApplianceTypes.Appliance);
     }
 
     /**
      * Print out appliances in the list
+     *
      * @param appliances
      */
-    public void displayAppliancesFromList(List<Appliance> appliances) {
+    public void displayAppliancesFromList(List<Appliance> appliances, ApplianceTypes type) {
 
-        if(appliances.isEmpty()) {
+        if (appliances.isEmpty()) {
             System.out.println("No appliances found.");
             return;
         }
 
+        System.out.println("Matching " + type.toString().toLowerCase() + "s:\n");
         for (Appliance appliance : appliances) {
-            System.out.println("Matching Appliances:");
             System.out.println(appliance);
         }
     }
 
+    public void displayType() {
+        System.out.println("Appliance Types");
+        System.out.println("1 - Refrigerators");
+        System.out.println("2 - Vacuums");
+        System.out.println("3 - Microwaves");
+        System.out.println("4 - Dishwashers");
+        System.out.println("Enter type of appliance:");
+
+        // read the type from the user
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            int inputType = scanner.nextInt();
+
+            switch (inputType) {
+                case 1:
+                    displayRefrigerators();
+                    break;
+                case 2:
+                    displayVacuums();
+                    break;
+                case 3:
+//                    displayMicrowaves();
+                    break;
+                case 4:
+//                    displayDishwashers();
+                    break;
+                default:
+                    System.out.println("Invalid input. Input was not a valid type.");
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("Invalid input. Input was not a number.");
+        }
+
+    }
+
+    /**
+     * Display refrigerators with the number of doors
+     */
+    public void displayRefrigerators() {
+
+        System.out.println("Enter number of doors: " +
+                "2 (double door), 3 (three doors) or 4 (four doors)");
+
+        List<Appliance> appliances = getRefrigerators();
+
+        if (appliances.isEmpty()) {
+            System.out.println("No refrigerators found with that number of doors.");
+        } else {
+            System.out.println("Matching Refrigerators:");
+            this.displayAppliancesFromList(appliances, ApplianceTypes.Refrigerator);
+        }
+    }
+
+    /**
+     * Get refrigerators with the number of doors
+     *
+     * @return
+     */
+    private List<Appliance> getRefrigerators() {
+        Scanner scanner = new Scanner(System.in);
+        Integer inputDoorNumber = scanner.nextInt();
+
+        // create a list for matching refrigerators
+        List<Appliance> appliances = new java.util.ArrayList<>();
+
+        // find the appliance in the list
+        for (Appliance appliance : applianceList) {
+            if (appliance instanceof Refrigerator) {
+                Refrigerator refrigerator = (Refrigerator) appliance;
+                if (refrigerator.doors == inputDoorNumber) {
+                    appliances.add(refrigerator);
+                }
+            }
+        }
+        return appliances;
+    }
+
+    /**
+     * Get vacuums with the voltage
+     */
+    public void displayVacuums() {
+        System.out.println("Enter battery voltage value. 18V(low) or 24V(high)");
+
+        List<Appliance> appliances = getVacuums();
+
+        if (appliances.isEmpty()) {
+            System.out.println("No vacuums found with that grade.");
+        } else {
+            this.displayAppliancesFromList(appliances, ApplianceTypes.Vacuum);
+        }
+    }
+
+    /**
+     * Get vacuums with the voltage
+     *
+     * @return
+     */
+    private List<Appliance> getVacuums() {
+        Scanner scanner = new Scanner(System.in);
+        Integer inputVoltage = scanner.nextInt();
+
+        // create a list for matching refrigerators
+        List<Appliance> appliances = new java.util.ArrayList<>();
+
+        // find the appliance in the list
+        for (Appliance appliance : applianceList) {
+            if (appliance instanceof Vacuum) {
+                Vacuum vacuum = (Vacuum) appliance;
+                if (vacuum.voltage == inputVoltage) {
+                    appliances.add(vacuum);
+                }
+            }
+        }
+        return appliances;
+    }
+
 //    public void DisplayDishwashers();
 //    public void DisplayMicrowaves();
-//    public void DisplayRefrigerators();
+
 //    public void DisplayVacuums();
 //    public void Find();
 //    public void RandomList();
 
     /**
      * Read the appliances from the text file
+     *
      * @return
      * @throws FileNotFoundException
      */
@@ -122,9 +243,8 @@ public class ModernAppliance {
         // create a new appliance list
         List<Appliance> appliances = new java.util.ArrayList<>();
 
-        try
-        {
-            scanner = new Scanner( dataFile );
+        try {
+            scanner = new Scanner(dataFile);
 
             // read the file line by line and create an appliance object
             // add the appliance object to the list
@@ -134,9 +254,7 @@ public class ModernAppliance {
             }
 
             scanner.close();
-        }
-        catch( FileNotFoundException e )
-        {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -190,7 +308,7 @@ public class ModernAppliance {
                             lineArray[6], // feature
                             lineArray[7]); // sound rating
                     break;
-                case Unknown:
+                case Appliance:
                     break;
             }
         }

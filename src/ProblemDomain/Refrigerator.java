@@ -7,19 +7,6 @@ public class Refrigerator extends Appliance {
     public Integer height;
     public Integer width;
 
-    /**
-     * Method to determine the formatted number of doors
-     */
-    public NumOfDoors numberOfDoors()
-    {
-        return switch (this.doors) {
-            case 2 -> NumOfDoors.Double;
-            case 3 -> NumOfDoors.Three;
-            case 4 -> NumOfDoors.Four;
-            default -> null;
-        };
-    }
-
     public Refrigerator(String itemNumber, String brand, Integer quantity,
                         Integer wattage, String color, Double price,
                         Integer doors, Integer height, Integer width) {
@@ -29,13 +16,35 @@ public class Refrigerator extends Appliance {
         this.width = width;
     }
 
+    /**
+     * Method to determine the formatted number of doors
+     */
+    public NumOfDoors getNumberOfDoors() {
+        return switch (this.doors) {
+            case 2 -> NumOfDoors.Double;
+            case 3 -> NumOfDoors.Three;
+            case 4 -> NumOfDoors.Four;
+            default -> null;
+        };
+    }
+
+    /**
+     * Method to display the number of doors
+     */
+    public String displayNumberOfDoors() {
+        return switch (this.getNumberOfDoors()) {
+            case Double -> "Double Door";
+            case Three -> "Three Doors";
+            case Four -> "Four Doors";
+            default -> "Unknown";
+        };
+    }
 
     /**
      * Method to format the all properties for a file
      */
     @Override
-    public String formatForFile()
-    {
+    public String formatForFile() {
         String commonFormatted = super.formatForFile();
 
         return String.join(
@@ -51,13 +60,13 @@ public class Refrigerator extends Appliance {
     @Override
     public String toString() {
         return "ItemNumber: " + itemNumber +
-                "\nbrand: " + brand +
-                "\nquantity: " + quantity +
-                "\nwattage: " + wattage +
-                "\ncolor: " + color +
-                "\nprice: " + price +
-                "\nnumberOfDoors: " + doors +
-                "\nheight: " + height +
-                "\nwidth: " + width;
+                "\nBrand: " + brand +
+                "\nQuantity: " + quantity +
+                "\nWattage: " + wattage +
+                "\nColor: " + color +
+                "\nPrice: " + price +
+                "\nNumber of Doors: " + this.displayNumberOfDoors() +
+                "\nHeight: " + height +
+                "\nWidth: " + width + "\n";
     }
 }
