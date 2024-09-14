@@ -52,7 +52,7 @@ public abstract class Appliance {
     /**
      * Method to format the appliance properties for a file
      */
-    public String FormatForFile()
+    public String formatForFile()
     {
         // join all the properties with a semicolon
         return String.join(

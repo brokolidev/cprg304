@@ -40,9 +40,10 @@ public class Microwave extends Appliance {
     /**
      * Method to format all the properties of the microwave for a file
      */
-    public String FormatForFile()
+    @Override
+    public String formatForFile()
     {
-        String commonFormatted = super.FormatForFile();
+        String commonFormatted = super.formatForFile();
 
         // join all the properties with a semicolon
         return String.join(
@@ -56,15 +57,13 @@ public class Microwave extends Appliance {
     // redefine the toString method
     @Override
     public String toString() {
-        return "Microwave{" +
-                "itemNumber=" + itemNumber +
-                ", brand='" + brand + '\'' +
-                ", quantity=" + quantity +
-                ", wattage=" + wattage +
-                ", color='" + color + '\'' +
-                ", price=" + price +
-                ", capacity=" + capacity +
-                ", roomType='" + roomType + '\'' +
-                '}';
+        return "ItemNumber: " + itemNumber +
+                "\nbrand: " + brand +
+                "\nquantity: " + quantity +
+                "\nwattage: " + wattage +
+                "\ncolor: " + color +
+                "\nprice: " + price +
+                "\ncapacity: " + capacity +
+                "\nroomType: " + roomType;
     }
 }

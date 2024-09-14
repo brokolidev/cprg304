@@ -10,7 +10,7 @@ public class Main {
         Options option = Options.None;
 
         while (option != Options.SaveExit) {
-            modernAppliances.DisplayMenu();
+            modernAppliances.displayMenu();
 
             System.out.println("Enter option:");
 
@@ -18,10 +18,10 @@ public class Main {
 
             switch (option) {
                 case Checkout:
-                    modernAppliances.Checkout();
+                    modernAppliances.checkout();
                     break;
                 case Find:
-//                    modernAppliances.Find();
+                    modernAppliances.find();
                     break;
                 case DisplayType:
 //                    modernAppliances

@@ -17,7 +17,7 @@ public class Vacuum extends Appliance {
     /**
      * Determine the voltage level of the vacuum
      */
-    public Voltage voltageLevel()
+    public Voltage getVoltageLevel()
     {
         return switch (this.voltage) {
             case 18 -> Voltage.Low;
@@ -27,12 +27,25 @@ public class Vacuum extends Appliance {
     }
 
     /**
+     * Method to display the voltage level
+     * @return
+     */
+    public String displayVoltage()
+    {
+        return switch (this.getVoltageLevel()) {
+            case Low -> "Low";
+            case High -> "High";
+            default -> "Any";
+        };
+    }
+
+    /**
      * Method to format the all properties for a file
      */
     @Override
-    public String FormatForFile()
+    public String formatForFile()
     {
-        String commonFormatted = super.FormatForFile();
+        String commonFormatted = super.formatForFile();
 
         return String.join(
                 ";",
@@ -45,15 +58,13 @@ public class Vacuum extends Appliance {
     // redefine the toString method
     @Override
     public String toString() {
-        return "Vacuum{" +
-                "itemNumber=" + itemNumber +
-                ", brand='" + brand + '\'' +
-                ", quantity=" + quantity +
-                ", wattage=" + wattage +
-                ", color='" + color + '\'' +
-                ", price=" + price +
-                ", grade='" + grade + '\'' +
-                ", voltage=" + voltage +
-                '}';
+        return "ItemNumber: " + itemNumber +
+                "\nbrand: " + brand +
+                "\nquantity: " + quantity +
+                "\nwattage: " + wattage +
+                "\ncolor: " + color +
+                "\nprice: " + price +
+                "\ngrade: " + grade +
+                "\nvoltage: " + this.displayVoltage();
     }
 }

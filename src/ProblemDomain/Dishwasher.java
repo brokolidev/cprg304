@@ -47,9 +47,9 @@ public class Dishwasher extends Appliance {
      * Method to format the all properties for a file
      */
     @Override
-    public String FormatForFile()
+    public String formatForFile()
     {
-        String commonFormatted = super.FormatForFile();
+        String commonFormatted = super.formatForFile();
 
         return String.join(
                 ";",
@@ -62,15 +62,13 @@ public class Dishwasher extends Appliance {
     // redefine the toString method
     @Override
     public String toString() {
-        return "Dishwasher{" +
-                "itemNumber=" + itemNumber +
-                ", brand='" + brand + '\'' +
-                ", quantity=" + quantity +
-                ", wattage=" + wattage +
-                ", color='" + color + '\'' +
-                ", price=" + price +
-                ", feature='" + feature + '\'' +
-                ", soundRating='" + soundRating + '\'' +
-                '}';
+        return "ItemNumber: " + itemNumber +
+                "\nbrand: " + brand +
+                "\nquantity: " + quantity +
+                "\nwattage: " + wattage +
+                "\ncolor: " + color +
+                "\nprice: " + price +
+                "\nfeature: " + feature +
+                "\nsoundRating: " + this.displaySoundRating();
     }
 }

@@ -17,7 +17,7 @@ public class ModernAppliance {
         this.applianceList = readAppliances();
     }
 
-    public void DisplayMenu() {
+    public void displayMenu() {
         System.out.println("\nWelcome to Modern Appliances!");
         System.out.println("How may we assist you?");
         System.out.println("1 - Check out Appliance");
@@ -27,7 +27,11 @@ public class ModernAppliance {
         System.out.println("5 - Save and exit");
     }
 
-    public void Checkout() {
+    /**
+     * Menu option 1
+     * Check out an appliance
+     */
+    public void checkout() {
         System.out.println("Enter the item number of an appliance");
 
         // read the item number from the user
@@ -55,6 +59,50 @@ public class ModernAppliance {
             }
         }
     }
+
+    /**
+     * Menu option 2
+     * Find appliances by brand
+     */
+    public void find() {
+        System.out.println("Enter brand to search for");
+
+        // read the brand from the user
+        Scanner scanner = new Scanner(System.in);
+        String inputBrand = scanner.nextLine();
+        inputBrand = inputBrand.trim().toLowerCase();
+
+        // create a list for found appliances
+        List<Appliance> foundAppliances = new java.util.ArrayList<>();
+
+        // find the appliance in the list
+        for (Appliance appliance : applianceList) {
+            if (appliance.brand.toLowerCase().equals(inputBrand)) {
+                foundAppliances.add(appliance);
+            }
+        }
+
+        // display the found appliances
+        this.displayAppliancesFromList(foundAppliances);
+    }
+
+    /**
+     * Print out appliances in the list
+     * @param appliances
+     */
+    public void displayAppliancesFromList(List<Appliance> appliances) {
+
+        if(appliances.isEmpty()) {
+            System.out.println("No appliances found.");
+            return;
+        }
+
+        for (Appliance appliance : appliances) {
+            System.out.println("Matching Appliances:");
+            System.out.println(appliance);
+        }
+    }
+
 //    public void DisplayDishwashers();
 //    public void DisplayMicrowaves();
 //    public void DisplayRefrigerators();

@@ -34,9 +34,9 @@ public class Refrigerator extends Appliance {
      * Method to format the all properties for a file
      */
     @Override
-    public String FormatForFile()
+    public String formatForFile()
     {
-        String commonFormatted = super.FormatForFile();
+        String commonFormatted = super.formatForFile();
 
         return String.join(
                 ";",
@@ -50,16 +50,14 @@ public class Refrigerator extends Appliance {
     // redefine the toString method
     @Override
     public String toString() {
-        return "Refrigerator{" +
-                "itemNumber=" + itemNumber +
-                ", brand='" + brand + '\'' +
-                ", quantity=" + quantity +
-                ", wattage=" + wattage +
-                ", color='" + color + '\'' +
-                ", price=" + price +
-                ", numberOfDoors=" + doors +
-                ", height=" + height +
-                ", width=" + width +
-                '}';
+        return "ItemNumber: " + itemNumber +
+                "\nbrand: " + brand +
+                "\nquantity: " + quantity +
+                "\nwattage: " + wattage +
+                "\ncolor: " + color +
+                "\nprice: " + price +
+                "\nnumberOfDoors: " + doors +
+                "\nheight: " + height +
+                "\nwidth: " + width;
     }
 }
