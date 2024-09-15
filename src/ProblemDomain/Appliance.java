@@ -53,11 +53,18 @@ public abstract class Appliance {
      * Method to format the appliance properties for a file
      */
     public String formatForFile() {
+        String strPrice = price.toString();
+        // get rid of decimal from price if there is no decimal value
+        if (price % 1 == 0) {
+            Integer intPrice = price.intValue();
+            strPrice = intPrice.toString();
+        }
+
         // join all the properties with a semicolon
         return String.join(
                 ";",
                 itemNumber.toString(), brand, quantity.toString(),
-                wattage.toString(), color, price.toString()
+                wattage.toString(), color, strPrice
         );
     }
 

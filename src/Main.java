@@ -32,7 +32,7 @@ public class Main {
                     modernAppliances.randomList();
                     break;
                 case SaveExit:
-//                    modernAppliances.save();
+                    modernAppliances.save();
                     break;
                 default:
                     System.out.println("Invalid option entered. Please try again.");

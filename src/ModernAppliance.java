@@ -359,6 +359,26 @@ public class ModernAppliance {
         return appliances;
     }
 
+    public void save() {
+        System.out.println("Saving the appliances...");
+
+        // create a new file
+        File file = new File(APPLIANCES_TEXT_FILE);
+
+        // write the appliance objects to the file
+        try {
+            java.io.FileWriter fileWriter = new java.io.FileWriter(file);
+            for (Appliance appliance : applianceList) {
+                fileWriter.write(appliance.formatForFile() + "\n");
+            }
+            fileWriter.close();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Appliances saved successfully.");
+    }
+
     /**
      * Create an appliance object from the line
      *

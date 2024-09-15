@@ -9,7 +9,7 @@ public class Refrigerator extends Appliance {
 
     public Refrigerator(String itemNumber, String brand, Integer quantity,
                         Integer wattage, String color, Double price,
-                        Integer doors, Integer height, Integer width) {
+                        Integer doors, Integer width, Integer height) {
         super(itemNumber, brand, quantity, wattage, color, price);
         this.doors = doors;
         this.height = height;
