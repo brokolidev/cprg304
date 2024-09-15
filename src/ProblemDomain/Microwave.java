@@ -54,12 +54,8 @@ public class Microwave extends Appliance {
     // redefine the toString method
     @Override
     public String toString() {
-        return "ItemNumber: " + itemNumber +
-                "\nBrand: " + brand +
-                "\nQuantity: " + quantity +
-                "\nWattage: " + wattage +
-                "\nColor: " + color +
-                "\nPrice: " + price +
+        String baseString = super.toString();
+        return baseString +
                 "\nCapacity: " + capacity +
                 "\nRoom Type: " + displayRoomType() + "\n";
     }

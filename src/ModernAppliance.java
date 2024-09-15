@@ -54,7 +54,7 @@ public class ModernAppliance {
         } else {
             if (foundAppliance.quantity > 0) {
                 foundAppliance.quantity--;
-                System.out.println("Appliance " + foundAppliance.itemNumber + " has been checked out.");
+                System.out.println("Appliance \"" + foundAppliance.itemNumber + "\" has been checked out.");
             } else {
                 System.out.println("The appliance is not available to be checked out.");
             }
@@ -255,7 +255,7 @@ public class ModernAppliance {
 
                 // compare first letter of the room type
                 if (microwave.roomType.substring(0, 1).toLowerCase()
-                        .equals(inputRoomType.substring(0, 1))) {
+                        .equals(inputRoomType.substring(0, 1).toLowerCase())) {
                     appliances.add(microwave);
                 }
             }
