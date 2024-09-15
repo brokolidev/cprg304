@@ -1,10 +1,12 @@
 import Enums.Options;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
 
-    public static void main( String[] args ) throws IOException {
+    public static void main(String[] args) throws IOException {
 
         ModernAppliance modernAppliances = new ModernAppliance();
         Options option = Options.None;
@@ -27,10 +29,10 @@ public class Main {
                     modernAppliances.displayType();
                     break;
                 case RandomList:
-//                    modernAppliances.RandomList();
+                    modernAppliances.randomList();
                     break;
                 case SaveExit:
-//                    modernAppliances.Save();
+//                    modernAppliances.save();
                     break;
                 default:
                     System.out.println("Invalid option entered. Please try again.");

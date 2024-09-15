@@ -116,26 +116,29 @@ public class ModernAppliance {
         // read the type from the user
         Scanner typeScanner = new Scanner(System.in);
 
-        int inputType = typeScanner.nextInt();
+        try {
+            int inputType = typeScanner.nextInt();
 
-        switch (inputType) {
-            case 1:
-                displayRefrigerators();
-                break;
-            case 2:
-                displayVacuums();
-                break;
-            case 3:
-                displayMicrowaves();
-                break;
-            case 4:
-//                    displayDishwashers();
-                break;
-            default:
-                System.out.println("Invalid input. Input was not a valid type.");
-                break;
+            switch (inputType) {
+                case 1:
+                    displayRefrigerators();
+                    break;
+                case 2:
+                    displayVacuums();
+                    break;
+                case 3:
+                    displayMicrowaves();
+                    break;
+                case 4:
+                    displayDishwashers();
+                    break;
+                default:
+                    System.out.println("Invalid input. Input was not a valid type.");
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("Invalid input. Input was not a valid type.");
         }
-
     }
 
     /**
@@ -261,12 +264,69 @@ public class ModernAppliance {
         return appliances;
     }
 
-//    public void DisplayDishwashers();
-//    public void DisplayMicrowaves();
+    /**
+     * Display dishwashers with the sound rating
+     */
+    public void displayDishwashers() {
+        System.out.println("Enter the sound rating of the dishwasher: " +
+                "Qt (Quietest), Qr (Quieter), Qu(Quiet) or M (Moderate):");
 
-//    public void DisplayVacuums();
-//    public void Find();
-//    public void RandomList();
+        List<Appliance> appliances = getDishwashers();
+
+        if (appliances.isEmpty()) {
+            System.out.println("No dishwashers found with that feature.");
+        } else {
+            this.displayAppliancesFromList(appliances, ApplianceTypes.Dishwasher);
+        }
+    }
+
+    /**
+     * Get dishwashers with the sound rating
+     *
+     * @return
+     */
+    private List<Appliance> getDishwashers() {
+        Scanner soundRatingScanner = new Scanner(System.in);
+        String inputSoundRating = soundRatingScanner.nextLine().trim();
+
+        // create a list for matching refrigerators
+        List<Appliance> appliances = new java.util.ArrayList<>();
+
+        // find the appliance in the list
+        for (Appliance appliance : applianceList) {
+            if (appliance instanceof Dishwasher) {
+                Dishwasher dishwasher = (Dishwasher) appliance;
+
+                // compare first letter of the room type
+                if (dishwasher.soundRating.toLowerCase()
+                        .equals(inputSoundRating.toLowerCase())) {
+                    appliances.add(dishwasher);
+                }
+            }
+        }
+        return appliances;
+    }
+
+    /**
+     * Menu option 4
+     * Produce a random list of appliances
+     */
+    public void randomList() {
+        System.out.println("Enter number of appliances:");
+
+        Scanner scanner = new Scanner(System.in);
+        Integer numberOfAppliances = scanner.nextInt();
+
+        if (numberOfAppliances > applianceList.size()) {
+            System.out.println("Number of appliances to display is greater than the total number of appliances.");
+        } else {
+            for (int i = 0; i < numberOfAppliances; i++) {
+                // get a random index number
+                int randomIndex = (int) (Math.random() * applianceList.size());
+                System.out.println(applianceList.get(randomIndex));
+            }
+        }
+    }
 
     /**
      * Read the appliances from the text file
@@ -299,6 +359,12 @@ public class ModernAppliance {
         return appliances;
     }
 
+    /**
+     * Create an appliance object from the line
+     *
+     * @param line
+     * @return
+     */
     private Appliance createAppliance(String line) {
 
         Appliance appliance = null;
