@@ -20,7 +20,7 @@ public class Microwave extends Appliance {
     public MicrowaveRoomType getRoomType() {
         return switch (this.roomType) {
             case "Kitchen" -> MicrowaveRoomType.Kitchen;
-            case "Worksite" -> MicrowaveRoomType.WorkSite;
+            case "WorkSite" -> MicrowaveRoomType.WorkSite;
             default -> throw new IllegalStateException("Unexpected value: " + this.roomType);
         };
     }
@@ -31,7 +31,7 @@ public class Microwave extends Appliance {
     public String displayRoomType() {
         return switch (this.getRoomType()) {
             case MicrowaveRoomType.Kitchen -> "Kitchen";
-            case MicrowaveRoomType.WorkSite -> "Worksite";
+            case MicrowaveRoomType.WorkSite -> "Work Site";
         };
     }
 
@@ -61,6 +61,6 @@ public class Microwave extends Appliance {
                 "\nColor: " + color +
                 "\nPrice: " + price +
                 "\nCapacity: " + capacity +
-                "\nRoom Type: " + roomType + "\n";
+                "\nRoom Type: " + displayRoomType() + "\n";
     }
 }

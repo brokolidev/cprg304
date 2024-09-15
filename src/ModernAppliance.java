@@ -114,30 +114,26 @@ public class ModernAppliance {
         System.out.println("Enter type of appliance:");
 
         // read the type from the user
-        Scanner scanner = new Scanner(System.in);
+        Scanner typeScanner = new Scanner(System.in);
 
-        try {
-            int inputType = scanner.nextInt();
+        int inputType = typeScanner.nextInt();
 
-            switch (inputType) {
-                case 1:
-                    displayRefrigerators();
-                    break;
-                case 2:
-                    displayVacuums();
-                    break;
-                case 3:
-//                    displayMicrowaves();
-                    break;
-                case 4:
+        switch (inputType) {
+            case 1:
+                displayRefrigerators();
+                break;
+            case 2:
+                displayVacuums();
+                break;
+            case 3:
+                displayMicrowaves();
+                break;
+            case 4:
 //                    displayDishwashers();
-                    break;
-                default:
-                    System.out.println("Invalid input. Input was not a valid type.");
-                    break;
-            }
-        } catch (Exception e) {
-            System.out.println("Invalid input. Input was not a number.");
+                break;
+            default:
+                System.out.println("Invalid input. Input was not a valid type.");
+                break;
         }
 
     }
@@ -166,8 +162,8 @@ public class ModernAppliance {
      * @return
      */
     private List<Appliance> getRefrigerators() {
-        Scanner scanner = new Scanner(System.in);
-        Integer inputDoorNumber = scanner.nextInt();
+        Scanner doorScanner = new Scanner(System.in);
+        Integer inputDoorNumber = doorScanner.nextInt();
 
         // create a list for matching refrigerators
         List<Appliance> appliances = new java.util.ArrayList<>();
@@ -205,8 +201,8 @@ public class ModernAppliance {
      * @return
      */
     private List<Appliance> getVacuums() {
-        Scanner scanner = new Scanner(System.in);
-        Integer inputVoltage = scanner.nextInt();
+        Scanner voltageScanner = new Scanner(System.in);
+        Integer inputVoltage = voltageScanner.nextInt();
 
         // create a list for matching refrigerators
         List<Appliance> appliances = new java.util.ArrayList<>();
@@ -217,6 +213,48 @@ public class ModernAppliance {
                 Vacuum vacuum = (Vacuum) appliance;
                 if (vacuum.voltage == inputVoltage) {
                     appliances.add(vacuum);
+                }
+            }
+        }
+        return appliances;
+    }
+
+    /**
+     * Display microwaves with the room type
+     */
+    public void displayMicrowaves() {
+        System.out.println("Room where the microwave will be installed: K (kitchen) or W (work site):");
+
+        List<Appliance> appliances = getMicrowaves();
+
+        if (appliances.isEmpty()) {
+            System.out.println("No microwaves found with that room type.");
+        } else {
+            this.displayAppliancesFromList(appliances, ApplianceTypes.Microwave);
+        }
+    }
+
+    /**
+     * Get microwaves with the room type
+     *
+     * @return
+     */
+    public List<Appliance> getMicrowaves() {
+        Scanner roomTypeScanner = new Scanner(System.in);
+        String inputRoomType = roomTypeScanner.nextLine().trim();
+
+        // create a list for matching refrigerators
+        List<Appliance> appliances = new java.util.ArrayList<>();
+
+        // find the appliance in the list
+        for (Appliance appliance : applianceList) {
+            if (appliance instanceof Microwave) {
+                Microwave microwave = (Microwave) appliance;
+
+                // compare first letter of the room type
+                if (microwave.roomType.substring(0, 1).toLowerCase()
+                        .equals(inputRoomType.substring(0, 1))) {
+                    appliances.add(microwave);
                 }
             }
         }
