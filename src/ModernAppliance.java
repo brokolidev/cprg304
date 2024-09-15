@@ -50,7 +50,7 @@ public class ModernAppliance {
         }
 
         if (foundAppliance == null) {
-            System.out.println("No appliance found with that item number");
+            System.out.println("No appliances found with that item number");
         } else {
             if (foundAppliance.quantity > 0) {
                 foundAppliance.quantity--;
@@ -154,7 +154,6 @@ public class ModernAppliance {
         if (appliances.isEmpty()) {
             System.out.println("No refrigerators found with that number of doors.");
         } else {
-            System.out.println("Matching Refrigerators:");
             this.displayAppliancesFromList(appliances, ApplianceTypes.Refrigerator);
         }
     }
