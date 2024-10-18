@@ -84,6 +84,10 @@ public class AppDriver
 
 			// calculate the run time and print it as the last line
 			System.out.println("Run time: " + (System.currentTimeMillis() - startTime) + " milliseconds");
+
+			// Print which sorting algorithm was used and the comparison type
+			System.out.println("Sorting algorithm: " + sortingAlgorithm);
+			System.out.println("Comparison type: " + comparisonType);
 		}
     }
 
@@ -164,6 +168,9 @@ public class AppDriver
 				break;
 			case "q":
 				quickSort(shapes, comparator);
+				break;
+			case "g":
+				bogobogoSort(shapes, comparator);
 				break;
 			default:
 				throw new IllegalArgumentException("Invalid sorting algorithm: " + sortType);

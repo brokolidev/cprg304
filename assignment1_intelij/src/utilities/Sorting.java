@@ -264,4 +264,58 @@ public class Sorting {
 
         return i + 1;
     }
+
+    /**
+     * Bogobogo sort for an array of Comparables in descending order.
+     *
+     * @param arr
+     * @param comparator
+     */
+    public static void bogobogoSort(Comparable[] arr, Comparator<Shape3D> comparator) {
+        int n = arr.length;
+
+        // Check if the array is sorted
+        while (!isSorted(arr, comparator)) {
+            // Shuffle the array if not sorted
+            shuffle(arr);
+        }
+    }
+
+    /**
+     * Utility function to check if the array is sorted.
+     *
+     * @param arr the array to check
+     * @return true if the array is sorted, false otherwise
+     */
+    private static boolean isSorted(Comparable[] arr, Comparator<Shape3D> comparator) {
+        for (int i = 1; i < arr.length; i++) {
+            int comparisonResult;
+            if (comparator != null) {
+                comparisonResult = comparator.compare((Shape3D) arr[i - 1], (Shape3D) arr[i]);
+            } else {
+                comparisonResult = arr[i - 1].compareTo(arr[i]);
+            }
+            if (comparisonResult > 0) {
+                return false; // The array is not sorted
+            }
+        }
+        return true; // The array is sorted
+    }
+
+    /**
+     * Utility function to shuffle the array.
+     *
+     * @param arr
+     */
+    private static void shuffle(Comparable[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n; i++) {
+            int randomIndex = (int) (Math.random() * n);
+            // Swap arr[i] with arr[randomIndex]
+            Comparable temp = arr[i];
+            arr[i] = arr[randomIndex];
+            arr[randomIndex] = temp;
+        }
+    }
+
 }
